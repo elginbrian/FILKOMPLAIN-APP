@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="lightgrey">#BEBECD</color>
+    <color name="boldgrey">#ABABC4</color>
+    <color name="formgrey">#EDEDF4</color>
+
+    <color name="lightblue">#3C90B6</color>
+    <color name="boldblue">#0389C6</color>
+    <color name="darkblue">#0070A4</color>
+
+    <color name="orange">#F36C30</color>
+
+    <color name="white_ripple">#66FFFFFF</color>
+    <color name="dark_ripple">#1F000000</color>
+
+</resources>

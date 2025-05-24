@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/bgItemKomplain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/RoundedImageView"
+            app:srcCompat="@drawable/bg_item_komplain" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/phItemKomplain"
+            android:layout_width="0dp"
+            android:layout_height="153dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@+id/bgItemKomplain"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/bgItemKomplain"
+            app:layout_constraintTop_toTopOf="@+id/bgItemKomplain"
+            app:shapeAppearanceOverlay="@style/RoundedPhoto"
+            app:srcCompat="@drawable/ph_img_komplain" />
+
+        <TextView
+            android:id="@+id/titleItemKomplain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:maxHeight="30dp"
+            android:fontFamily="@font/satoshi_bold"
+            android:text="Judul Komplain"
+            android:textAlignment="textStart"
+            android:textColor="@color/boldblue"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/bgItemKomplain"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/bgItemKomplain"
+            app:layout_constraintTop_toBottomOf="@+id/phItemKomplain" />
+
+        <ImageView
+            android:id="@+id/iconLokasiItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@+id/bgItemKomplain"
+            app:layout_constraintTop_toBottomOf="@+id/titleItemKomplain"
+            app:srcCompat="@drawable/icon_location_item" />
+
+        <TextView
+            android:id="@+id/textLokasiKomplain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/satoshi_bold"
+            android:maxHeight="20dp"
+            android:text="Lokasi"
+            android:textColor="@color/darkblue"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/iconLokasiItem"
+            app:layout_constraintTop_toBottomOf="@+id/titleItemKomplain" />
+
+        <ImageView
+            android:id="@+id/iconTanggalItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textLokasiKomplain"
+            app:layout_constraintTop_toBottomOf="@+id/titleItemKomplain"
+            app:srcCompat="@drawable/icon_calendar_item" />
+
+        <TextView
+            android:id="@+id/textTanggalKomplain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/satoshi_bold"
+            android:maxHeight="20dp"
+            android:text="Tanggal"
+            android:textColor="@color/darkblue"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/bgItemKomplain"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/iconTanggalItem"
+            app:layout_constraintTop_toBottomOf="@+id/titleItemKomplain" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

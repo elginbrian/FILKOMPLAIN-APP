@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orange"
+    tools:context=".LoginActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="440dp"
+        android:layout_gravity="end"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:layout_marginRight="-34dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/bgLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleX="0.85"
+            android:scaleY="0.85"
+            android:layout_gravity="end"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/bg_loginpage" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/logoFILKOMPLAIN"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_white" />
+
+    <TextView
+        android:id="@+id/textLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/satoshi_black"
+        android:text="Udah punya\nakun?\nBisa tinggal\nmasuk nih!"
+        android:textAlignment="textEnd"
+        android:textColor="@color/white"
+        android:textSize="44sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLoginGoogle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnLoginGoogle"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_btn_login_google"
+        android:fontFamily="@font/satoshi_bold"
+        android:text="Lanjut dengan Google"
+        android:textAllCaps="false"
+        android:textColor="@color/boldblue"
+        android:textSize="20sp"
+        android:paddingBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLoginEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:stateListAnimator="@null" />
+
+    <ImageView
+        android:id="@+id/iconGoogle"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/btnLoginGoogle"
+        app:layout_constraintEnd_toEndOf="@id/btnLoginGoogle"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="@id/btnLoginGoogle"
+        app:layout_constraintTop_toTopOf="@id/btnLoginGoogle"
+        app:srcCompat="@drawable/icon_google" />
+
+    <Button
+        android:id="@+id/btnLoginEmail"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_btn_login_email"
+        android:fontFamily="@font/satoshi_bold"
+        android:text="Lanjut dengan Email"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:paddingBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/textDaftar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:stateListAnimator="@null" />
+
+    <ImageView
+        android:id="@+id/iconEmail"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/btnLoginEmail"
+        app:layout_constraintEnd_toEndOf="@id/btnLoginEmail"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="@id/btnLoginEmail"
+        app:layout_constraintTop_toTopOf="@id/btnLoginEmail"
+        app:srcCompat="@drawable/icon_email_reg" />
+
+    <TextView
+        android:id="@+id/textDaftar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/satoshi_med"
+        android:text="Belum punya akun? Buat akun"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/textNama"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/satoshi_black"
+            android:layout_marginHorizontal="30dp"
+            android:text="Halo, User!"
+            android:textAlignment="textStart"
+            android:textColor="@color/orange"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toStartOf="@+id/btnShowProfile"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textProdi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:fontFamily="@font/satoshi_bold"
+            android:text="Program Studi"
+            android:textAlignment="textStart"
+            android:textColor="@color/lightgrey"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/btnShowProfile"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textNama" />
+
+        <ImageButton
+            android:id="@+id/btnShowProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/bg_btn_profile_photo_small_ripple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textTanya"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/satoshi_black"
+            android:layout_marginHorizontal="30dp"
+            android:text="Mau ngabarin apa\nhari ini, User? 😉"
+            android:textAlignment="textStart"
+            android:textColor="@color/boldblue"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textProdi" />
+
+        <LinearLayout
+            android:id="@+id/iconTextRiwayat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTanya">
+
+            <ImageView
+                android:id="@+id/iconHistory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/icon_history" />
+
+            <TextView
+                android:id="@+id/textRiwayat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/satoshi_bold"
+                android:text="Riwayat"
+                android:textAlignment="textStart"
+                android:textColor="@color/darkblue"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/bgMainEmpty"
+            android:layout_width="wrap_content"
+            android:layout_height="400dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTanya"
+            app:srcCompat="@drawable/bg_main_empty" />
+
+        <TextView
+            android:id="@+id/textKosong1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="-40dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/satoshi_bold"
+            android:text="Kamu belum punya laporan nih!"
+            android:textAlignment="center"
+            android:textColor="@color/boldblue"
+            android:textSize="19sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bgMainEmpty" />
+
+        <TextView
+            android:id="@+id/textKosong2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/satoshi_med"
+            android:text="Untuk membuat laporan, tekan\ntombol kamera di bawah kanan ini!"
+            android:textAlignment="center"
+            android:textColor="@color/lightgrey"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textKosong1" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvKomplain"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="30dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconTextRiwayat"
+            app:layout_constraintVertical_bias="0.0"
+            tools:listitem="@layout/item_komplain" />
+
+        <Button
+            android:id="@+id/btnAddKomplain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/bg_btn_add_komplain_ripple"
+            android:fontFamily="@font/satoshi_bold"
+            android:scaleX="0.85"
+            android:scaleY="0.85"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

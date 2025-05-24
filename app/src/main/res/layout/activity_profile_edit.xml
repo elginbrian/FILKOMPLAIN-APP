@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white"
+    tools:context=".ProfileEditActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/titleEditProfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginHorizontal="30dp"
+            android:fontFamily="@font/satoshi_black"
+            android:text="Ubah Profil"
+            android:textAlignment="center"
+            android:textColor="@color/boldblue"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/editFotoProfil"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleEditProfil"
+            app:srcCompat="@drawable/profile_photo" />
+
+        <Button
+            android:id="@+id/btnEditPfp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="85dp"
+            android:background="@drawable/bg_btn_edit_pfp_ripple"
+            android:stateListAnimator="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editFotoProfil"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <!-- Form mulai dari sini -->
+            <EditText
+                android:id="@+id/editNamaProfil"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/bg_form_input"
+                android:fontFamily="@font/satoshi_med"
+                android:hint="Nama Lengkap"
+                android:inputType="textPersonName"
+                android:paddingLeft="80dp"
+                android:paddingRight="34dp"
+                android:textAlignment="textStart"
+                android:textColor="@color/boldgrey"
+                android:textColorHint="@color/lightgrey"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editFotoProfil" />
+
+            <ImageView
+                android:id="@+id/iconName"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/editNamaProfil"
+                app:layout_constraintEnd_toEndOf="@+id/editNamaProfil"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="@+id/editNamaProfil"
+                app:layout_constraintTop_toTopOf="@id/editNamaProfil"
+                app:srcCompat="@drawable/icon_name" />
+
+            <EditText
+                android:id="@+id/editNIMProfil"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_form_input"
+                android:fontFamily="@font/satoshi_med"
+                android:hint="Nomor Induk Mahasiswa"
+                android:inputType="number"
+                android:paddingLeft="80dp"
+                android:paddingRight="34dp"
+                android:textColor="@color/boldgrey"
+                android:textColorHint="@color/lightgrey"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editNamaProfil" />
+
+            <ImageView
+                android:id="@+id/iconNIM"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/editNIMProfil"
+                app:layout_constraintEnd_toEndOf="@+id/editNIMProfil"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="@+id/editNIMProfil"
+                app:layout_constraintTop_toTopOf="@id/editNIMProfil"
+                app:srcCompat="@drawable/icon_nim" />
+
+        <EditText
+            android:id="@+id/editProdiProfil"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_form_input"
+            android:fontFamily="@font/satoshi_med"
+            android:hint="Program Studi"
+            android:focusable="false"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:inputType="none"
+            android:paddingLeft="80dp"
+            android:paddingRight="34dp"
+            android:textColor="@color/boldgrey"
+            android:textColorHint="@color/lightgrey"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editNIMProfil" />
+
+        <ImageView
+            android:id="@+id/iconProdi"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/editProdiProfil"
+            app:layout_constraintEnd_toEndOf="@+id/editProdiProfil"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@+id/editProdiProfil"
+            app:layout_constraintTop_toTopOf="@id/editProdiProfil"
+            app:srcCompat="@drawable/icon_prodi" />
+
+            <EditText
+                android:id="@+id/editEmailProfil"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_form_input"
+                android:fontFamily="@font/satoshi_med"
+                android:hint="Email"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:inputType="none"
+                android:paddingLeft="80dp"
+                android:paddingRight="34dp"
+                android:textColor="@color/boldgrey"
+                android:textColorHint="@color/lightgrey"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editProdiProfil" />
+
+            <ImageView
+                android:id="@+id/iconEmail"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/editEmailProfil"
+                app:layout_constraintEnd_toEndOf="@+id/editEmailProfil"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="@+id/editEmailProfil"
+                app:layout_constraintTop_toTopOf="@id/editEmailProfil"
+                app:srcCompat="@drawable/icon_email" />
+
+            <EditText
+                android:id="@+id/editPhoneProfil"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_form_input"
+                android:fontFamily="@font/satoshi_med"
+                android:hint="Nomor Telepon"
+                android:inputType="phone"
+                android:paddingLeft="80dp"
+                android:paddingRight="34dp"
+                android:textColor="@color/boldgrey"
+                android:textColorHint="@color/lightgrey"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editEmailProfil" />
+
+            <ImageView
+                android:id="@+id/icon_kontak_komplain"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/editPhoneProfil"
+                app:layout_constraintEnd_toEndOf="@+id/editPhoneProfil"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="@+id/editPhoneProfil"
+                app:layout_constraintTop_toTopOf="@id/editPhoneProfil"
+                app:srcCompat="@drawable/icon_phone" />
+        <!-- Form sampai di sini -->
+
+        <Button
+            android:id="@+id/btnSelesaiEditProfil"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/bg_btn_confirm_selector"
+            android:fontFamily="@font/satoshi_bold"
+            android:paddingBottom="2dp"
+            android:stateListAnimator="@null"
+            android:text="Simpan"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editPhoneProfil"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

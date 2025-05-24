@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white"
+    tools:context=".KomplainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/titleKomplain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/satoshi_black"
+            android:text="Komplain"
+            android:textAlignment="textStart"
+            android:textColor="@color/boldblue"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/btnDescUpFotoKomplain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleKomplain">
+
+            <Button
+                android:id="@+id/btnUpFotoKomplain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_horizontal|top"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_btn_up_photo_ripple"
+                android:scaleX="0.9"
+                android:scaleY="0.9"
+                android:textAlignment="center" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/bgAddKomplain"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/bg_add_komplain"
+                app:shapeAppearanceOverlay="@style/RoundedImageView" />
+
+            <TextView
+                android:id="@+id/textUpFoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_horizontal"
+                android:layout_marginTop="34dp"
+                android:layout_marginHorizontal="26dp"
+                android:fontFamily="@font/satoshi_bold"
+                android:text="Unggah foto"
+                android:textAlignment="center"
+                android:textColor="@color/darkblue"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textDescUpFoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center|center_horizontal"
+                android:layout_marginBottom="26dp"
+                android:layout_marginHorizontal="26dp"
+                android:fontFamily="@font/satoshi_med"
+                android:text="Kamu dapat mengunggah\nfoto laporanmu di sini"
+                android:textAlignment="center"
+                android:textColor="@color/lightblue"
+                android:textSize="14sp" />
+        </FrameLayout>
+
+        <!-- Form mulai dari sini -->
+        <EditText
+            android:id="@+id/editJudul"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="70dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/bg_form_input"
+            android:fontFamily="@font/satoshi_med"
+            android:hint="Judul"
+            android:inputType="textCapWords"
+            android:paddingLeft="80dp"
+            android:paddingRight="34dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/boldgrey"
+            android:textColorHint="@color/lightgrey"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnDescUpFotoKomplain" />
+
+        <ImageView
+            android:id="@+id/iconJudul"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/editJudul"
+            app:layout_constraintEnd_toEndOf="@+id/editJudul"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@+id/editJudul"
+            app:layout_constraintTop_toTopOf="@id/editJudul"
+            app:srcCompat="@drawable/icon_title" />
+
+        <EditText
+            android:id="@+id/editDescKomplain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="70dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_form_input"
+            android:fontFamily="@font/satoshi_med"
+            android:hint="Deskripsi"
+            android:inputType="textMultiLine"
+            android:paddingLeft="80dp"
+            android:paddingRight="34dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/boldgrey"
+            android:textColorHint="@color/lightgrey"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editJudul" />
+
+        <ImageView
+            android:id="@+id/iconDescKomplain"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:scaleX="0.9"
+            android:scaleY="0.9"
+            app:layout_constraintBottom_toBottomOf="@+id/editDescKomplain"
+            app:layout_constraintEnd_toEndOf="@+id/editDescKomplain"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@+id/editDescKomplain"
+            app:layout_constraintTop_toTopOf="@id/editDescKomplain"
+            app:srcCompat="@drawable/icon_desc_komplain" />
+
+        <EditText
+            android:id="@+id/editLokasi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="70dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_form_input"
+            android:fontFamily="@font/satoshi_med"
+            android:hint="Lokasi"
+            android:inputType="text"
+            android:paddingLeft="80dp"
+            android:paddingRight="34dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/boldgrey"
+            android:textColorHint="@color/lightgrey"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editDescKomplain" />
+
+        <ImageView
+            android:id="@+id/iconLokasi"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/editLokasi"
+            app:layout_constraintEnd_toEndOf="@+id/editLokasi"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@+id/editLokasi"
+            app:layout_constraintTop_toTopOf="@id/editLokasi"
+            app:srcCompat="@drawable/icon_location" />
+
+        <EditText
+            android:id="@+id/editKontak"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="70dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_form_input"
+            android:fontFamily="@font/satoshi_med"
+            android:hint="Kontak"
+            android:inputType="textMultiLine"
+            android:paddingLeft="80dp"
+            android:paddingRight="34dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/boldgrey"
+            android:textColorHint="@color/lightgrey"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editLokasi" />
+
+        <ImageView
+            android:id="@+id/icon_kontak"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:scaleX="1.1"
+            android:scaleY="1.1"
+            app:layout_constraintBottom_toBottomOf="@+id/editKontak"
+            app:layout_constraintEnd_toEndOf="@+id/editKontak"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@+id/editKontak"
+            app:layout_constraintTop_toTopOf="@id/editKontak"
+            app:srcCompat="@drawable/icon_contact" />
+        <!-- Form sampai di sini -->
+
+        <Button
+            android:id="@+id/btnBuatKomplain"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/bg_btn_confirm_selector"
+            android:fontFamily="@font/satoshi_bold"
+            android:paddingBottom="2dp"
+            android:stateListAnimator="@null"
+            android:text="Buat Komplain"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editKontak"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
