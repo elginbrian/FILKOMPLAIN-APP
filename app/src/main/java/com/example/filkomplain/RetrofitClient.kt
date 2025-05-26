@@ -6,12 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = "https://313c-66-96-225-80.ngrok-free.app/" // Ganti sesuai IP Server
-    private const val UPLOADS_PATH = "uploads/"
-
-    fun getUploadsUrl(): String {
-        return BASE_URL + UPLOADS_PATH
-    }
+    private const val BASE_URL = "https://filkomplain-be.elginbrian.com/"
 
     private val logging = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
