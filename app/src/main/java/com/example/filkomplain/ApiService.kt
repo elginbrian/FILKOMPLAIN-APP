@@ -15,6 +15,7 @@ import retrofit2.http.Part
 data class ApiReportItem(
     val id: Int,
     val user_name: String?,
+    val title: String?,
     val content: String?,
     val place: String?,
     val phone_number: String?,
@@ -61,12 +62,12 @@ data class LoginResponse(
 )
 
 data class CreateReportRequest(
+    val title: String,
     val user_name: String,
     val content: String,
     val place: String,
     val phone_number: String,
-    val status: String,
-    val attachment: String?
+    val status: String
 )
 
 data class CreateReportResponse(
@@ -93,10 +94,11 @@ data class FetchProfileResponse(
 )
 
 data class UpdateProfileRequest(
+    val username: String?,
     val nim: String?,
     val program_studi: String?,
     val phone_number: String?,
-    val username: String?
+    val profile_image_url: String?
 )
 
 interface ApiService {
@@ -125,12 +127,13 @@ interface ApiService {
     @POST("api/v1/reports")
     fun createReportWithAttachment(
         @Header("Authorization") token: String,
+        @Part("title") title: RequestBody,
         @Part("user_name") userName: RequestBody,
         @Part("content") content: RequestBody,
         @Part("place") place: RequestBody,
         @Part("phone_number") phoneNumber: RequestBody,
         @Part("status") status: RequestBody,
-        @Part attachment: MultipartBody.Part?
+        @Part attachment: MultipartBody.Part? // Part untuk file gambar tetap ada di sini
     ): Call<CreateReportResponse>
 
     @GET("api/v1/profile")
@@ -148,10 +151,10 @@ interface ApiService {
     @PUT("api/v1/profile")
     fun updateUserProfileWithAttachment(
         @Header("Authorization") token: String,
+        @Part("username") username: RequestBody?,
         @Part("nim") nim: RequestBody?,
         @Part("program_studi") programStudi: RequestBody?,
         @Part("phone_number") phoneNumber: RequestBody?,
-        @Part("username") username: RequestBody?,
         @Part profileImageFile: MultipartBody.Part?
     ): Call<GeneralApiResponse>
 }

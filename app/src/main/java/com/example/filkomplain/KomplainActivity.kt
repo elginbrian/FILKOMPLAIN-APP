@@ -50,6 +50,8 @@ class KomplainActivity : AppCompatActivity() {
     private var selectedImageUri: Uri? = null
     private var selectedFileName: String? = null
 
+    private var currentFetchedUsername: String? = null
+
     private val TAG = "KomplainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -105,7 +107,9 @@ class KomplainActivity : AppCompatActivity() {
     private fun loadProfileAndPreFillContact() {
         val authToken = SessionManager.getAuthToken(this)
         if (authToken == null) {
-            Log.w(TAG, "Auth token is null, cannot fetch profile for contact.")
+            Log.w(TAG, "Auth token is null, cannot fetch profile.")
+            Toast.makeText(this, "Sesi tidak valid, silakan login ulang.", Toast.LENGTH_LONG).show()
+            goToLogin()
             return
         }
 
@@ -114,30 +118,44 @@ class KomplainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<FetchProfileResponse>, response: Response<FetchProfileResponse>) {
                 if (response.isSuccessful) {
                     val profileResponse = response.body()
-                    if (profileResponse != null && profileResponse.success) {
-                        val phoneNumberFromProfile = profileResponse.data?.phone_number
-                        if (!phoneNumberFromProfile.isNullOrEmpty()) {
-                            editKontak.setText(phoneNumberFromProfile)
-                            Log.d(TAG, "Contact pre-filled from profile API: $phoneNumberFromProfile")
+                    if (profileResponse != null && profileResponse.success && profileResponse.data != null) {
+                        currentFetchedUsername = profileResponse.data.username
+                        val fetchedPhoneNumber = profileResponse.data.phone_number
+
+                        if (!fetchedPhoneNumber.isNullOrEmpty()) {
+                            editKontak.setText(fetchedPhoneNumber)
+                            Log.d(TAG, "Contact pre-filled from profile API: $fetchedPhoneNumber")
                         } else {
                             Log.d(TAG, "Phone number is empty in profile API response.")
                         }
+
+                        if (currentFetchedUsername.isNullOrBlank()) {
+                            Log.w(TAG, "Username from profile API is null or blank.")
+                            Toast.makeText(this@KomplainActivity, "Gagal mendapatkan username dari profil.", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Log.d(TAG, "Username fetched from profile API: '$currentFetchedUsername'")
+                        }
+                        SessionManager.saveUsername(this@KomplainActivity, currentFetchedUsername)
                     } else {
-                        Log.e(TAG, "Failed to get profile data: ${profileResponse?.message}")
+                        Log.e(TAG, "Failed to get profile data or data is null: ${profileResponse?.message}")
+                        Toast.makeText(this@KomplainActivity, "Gagal memuat data profil: ${profileResponse?.message}", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Log.e(TAG, "Error fetching profile for contact: ${response.code()} - ${response.errorBody()?.string()}")
+                    Log.e(TAG, "Error fetching profile: ${response.code()} - ${response.errorBody()?.string()}")
+                    Toast.makeText(this@KomplainActivity, "Gagal memuat data profil. Error: ${response.code()}", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<FetchProfileResponse>, t: Throwable) {
-                Log.e(TAG, "Network failure when fetching profile for contact: ${t.message}", t)
+                Log.e(TAG, "Network failure when fetching profile: ${t.message}", t)
+                Toast.makeText(this@KomplainActivity, "Gagal memuat data profil: Masalah jaringan.", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
     private fun areAllFieldsFilled(): Boolean {
-        return editDescKomplain.text.toString().trim().isNotEmpty() &&
+        return editJudul.text.toString().trim().isNotEmpty() &&
+                editDescKomplain.text.toString().trim().isNotEmpty() &&
                 editLokasi.text.toString().trim().isNotEmpty() &&
                 editKontak.text.toString().trim().isNotEmpty()
     }
@@ -159,21 +177,34 @@ class KomplainActivity : AppCompatActivity() {
 
     private fun submitReport() {
         val authToken = SessionManager.getAuthToken(this)
-        val usernameFromSession = SessionManager.getUsername(this)
+        // Menggunakan username yang sudah di-fetch dan disimpan di currentFetchedUsername
+        // atau mengambil dari SessionManager sebagai fallback jika currentFetchedUsername belum terisi
+        // (meskipun idealnya loadProfileAndPreFillContact sudah selesai)
+        val usernameForReport = currentFetchedUsername ?: SessionManager.getUsername(this)
 
-        if (authToken == null || usernameFromSession == null) {
-            Toast.makeText(this, "Sesi tidak valid. Silakan login kembali.", Toast.LENGTH_LONG).show()
-            goToLogin()
+        val phoneNumberFromUi = editKontak.text.toString().trim()
+
+        if (authToken == null || usernameForReport.isNullOrBlank()) {
+            Toast.makeText(this, "Username pengguna tidak valid. Harap tunggu profil termuat atau login ulang.", Toast.LENGTH_LONG).show()
+            Log.e(TAG, "SubmitReport validation failed: authToken=$authToken, usernameForReport='$usernameForReport'")
+            if (authToken == null) goToLogin()
             return
         }
 
-        val judulLaporan = editJudul.text.toString().trim()
-        val deskripsiLaporan = editDescKomplain.text.toString().trim()
-        val content = if (judulLaporan.isNotEmpty()) "$judulLaporan\n\n$deskripsiLaporan" else deskripsiLaporan
+        if (phoneNumberFromUi.isBlank()){
+            Toast.makeText(this, "Nomor kontak wajib diisi.", Toast.LENGTH_LONG).show()
+            return
+        }
 
+        val title = editJudul.text.toString().trim()
+        val content = editDescKomplain.text.toString().trim()
         val place = editLokasi.text.toString().trim()
-        val phoneNumber = editKontak.text.toString().trim()
         val status = "hold"
+
+        if (title.isEmpty() || content.isEmpty() || place.isEmpty()) {
+            Toast.makeText(this, "Judul, Deskripsi, dan Lokasi wajib diisi.", Toast.LENGTH_LONG).show()
+            return
+        }
 
         btnBuatKomplain.isEnabled = false
         btnBuatKomplain.text = "Mengirim..."
@@ -190,16 +221,28 @@ class KomplainActivity : AppCompatActivity() {
                 return
             }
 
-            val userNameRB = usernameFromSession.toRequestBody("text/plain".toMediaTypeOrNull())
-            val contentRB = content.toRequestBody("text/plain".toMediaTypeOrNull())
-            val placeRB = place.toRequestBody("text/plain".toMediaTypeOrNull())
-            val phoneNumberRB = phoneNumber.toRequestBody("text/plain".toMediaTypeOrNull())
-            val statusRB = status.toRequestBody("text/plain".toMediaTypeOrNull())
+            val finalUsername = usernameForReport
+            val finalTitle = title
+            val finalContent = content
+            val finalPlace = place
+            val finalPhoneNumber = phoneNumberFromUi
+            val finalStatus = status
+
+            Log.d(TAG, "Multipart Data: title='$finalTitle', user_name='$finalUsername', content='$finalContent', place='$finalPlace', phone_number='$finalPhoneNumber', status='$finalStatus'")
+
+            val titleRB = finalTitle.toRequestBody("text/plain".toMediaTypeOrNull())
+            val userNameRB = finalUsername.toRequestBody("text/plain".toMediaTypeOrNull())
+            val contentRB = finalContent.toRequestBody("text/plain".toMediaTypeOrNull())
+            val placeRB = finalPlace.toRequestBody("text/plain".toMediaTypeOrNull())
+            val phoneNumberRB = finalPhoneNumber.toRequestBody("text/plain".toMediaTypeOrNull())
+            val statusRB = finalStatus.toRequestBody("text/plain".toMediaTypeOrNull())
+
             val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
             val attachmentPart = MultipartBody.Part.createFormData("attachment", file.name, requestFile)
 
             call = apiService.createReportWithAttachment(
                 token = "Bearer $authToken",
+                title = titleRB,
                 userName = userNameRB,
                 content = contentRB,
                 place = placeRB,
@@ -209,13 +252,14 @@ class KomplainActivity : AppCompatActivity() {
             )
         } else {
             val createReportRequest = CreateReportRequest(
-                user_name = usernameFromSession,
+                title = title,
+                user_name = usernameForReport,
                 content = content,
                 place = place,
-                phone_number = phoneNumber,
-                status = status,
-                attachment = ""
+                phone_number = phoneNumberFromUi,
+                status = status
             )
+            Log.d(TAG, "JSON Data: $createReportRequest")
             call = apiService.createReport("Bearer $authToken", createReportRequest)
         }
 

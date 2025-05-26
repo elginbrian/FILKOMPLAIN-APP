@@ -267,6 +267,7 @@ class ProfileEditActivity : AppCompatActivity() {
                 nim = if (newNIM != oldNIM && newNIM.isNotEmpty()) newNIM else null,
                 program_studi = if (newProdi != oldProdi && newProdi.isNotEmpty()) newProdi else null,
                 phone_number = if (newTelepon != oldTelepon && newTelepon.isNotEmpty()) newTelepon else null,
+                profile_image_url = oldPhotoUrl
             )
             Log.d(TAG, "Updating profile WITHOUT attachment (JSON): $updateRequest")
             call = apiService.updateUserProfile("Bearer $authToken", updateRequest)

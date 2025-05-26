@@ -251,7 +251,7 @@ class MainActivity : AppCompatActivity() {
         val timestamp = parseApiDateTimeStringToTimestamp(apiReport.created_at)
 
         return KomplainModel(
-            judul = apiReport.content ?: "Tidak ada judul",
+            judul = apiReport.title ?: "Tidak ada judul",
             deskripsi = apiReport.content ?: "",
             lokasi = apiReport.place ?: "Lokasi tidak diketahui",
             kontak = apiReport.phone_number ?: "-",
